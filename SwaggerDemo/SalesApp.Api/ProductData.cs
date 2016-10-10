@@ -14,11 +14,11 @@ namespace SalesApp.Api
         {
             _products = new List<Product>();
 
-            _products.Add(new Product { Id = 1, Name = Guid.NewGuid().ToString() });
-            _products.Add(new Product { Id = 2, Name = Guid.NewGuid().ToString() });
-            _products.Add(new Product { Id = 3, Name = Guid.NewGuid().ToString() });
-            _products.Add(new Product { Id = 4, Name = Guid.NewGuid().ToString() });
-            _products.Add(new Product { Id = 5, Name = Guid.NewGuid().ToString() });
+            _products.Add(new Product { Id = 1, Name = Guid.NewGuid().ToString(), Price = new Price { Amount = 3.5m } });
+            _products.Add(new Product { Id = 2, Name = Guid.NewGuid().ToString(), Price = new Price { Amount = 5.7m } });
+            _products.Add(new Product { Id = 3, Name = Guid.NewGuid().ToString(), Price = new Price { Amount = 1.2m } });
+            _products.Add(new Product { Id = 4, Name = Guid.NewGuid().ToString(), Price = new Price { Amount = 0.9m } });
+            _products.Add(new Product { Id = 5, Name = Guid.NewGuid().ToString(), Price = new Price { Amount = 12.4m } });
         }
 
         public static int Add(Product product)
@@ -37,6 +37,7 @@ namespace SalesApp.Api
             if (prod != null)
             {
                 prod.Name = product.Name;
+                prod.Price = product.Price;
                 return prod.Id;
             }
 
