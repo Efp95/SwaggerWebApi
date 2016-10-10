@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Swashbuckle.Application;
 using System.Web.Http;
-using System.Web.Routing;
 
 namespace SalesApp.Api
 {
@@ -12,6 +8,22 @@ namespace SalesApp.Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            GlobalConfiguration.Configuration
+            .EnableSwagger(c =>
+            {
+                c.SingleApiVersion("v1", "Sales Application")
+                 .Description("A sample API")
+                 .TermsOfService("Dummy terms")
+             .Contact(cc => cc
+               .Name("Edson Flores Palma")
+               .Url("https://www.linkedin.com/in/edson-flores-palma-934039b8")
+               .Email("edsonflorespalma@gmail.com"))
+             .License(lc => lc
+               .Name("Dummy License")
+               .Url("https://somelicense.com/license"));
+            })
+        .EnableSwaggerUi();
         }
     }
 }
